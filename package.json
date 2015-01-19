@@ -1,0 +1,14 @@
+{
+  "name": "svgdraw",
+  "version": "0.0.0",
+  "description": "draw your svg's using javascript",
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "repository": "https://github.com/erickbelfy/svgdraw",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "~1.21.x"
+  }
+}
+

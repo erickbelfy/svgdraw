@@ -1,0 +1,11 @@
+{
+  "name": "svgdraw",
+  "version": "0.0.0",
+  "description": "draw your svg's using javascript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erickbelfy/svgdraw"
+  },
+  "dependencies": {}
+}
+
