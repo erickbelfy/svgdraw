@@ -27,9 +27,10 @@
   SvgDraw.prototype.createSvgTag = function (width, height) {
     if (this.svg === null) {
       this.svg = document.createElementNS(this.svgNS, 'svg');
+      this.svg.setAttributeNS(null, 'version', '1.1');
       this.svg.setAttributeNS(null, 'width', width);
       this.svg.setAttributeNS(null, 'height', height);
-      this.svg.setAttributeNS(null ,'viewBox', this.getViewBoxProperties(width, height));
+      this.svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', this.svgNS);
       this.svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:xlink', 'http://www.w3.org/1999/xlink');
       this.target.appendChild(this.svg);
 
@@ -38,12 +39,12 @@
 
   SvgDraw.prototype.circle = function (width, height, options) {
     this.createSvgTag(width, height);
-    var radius = Math.round(width / 2);
+    var circleRange = Math.round(width / 2);
     var circle = document.createElementNS(this.svgNS, 'circle');
     circle = this.attr(circle, options);
-    circle.setAttributeNS(null, 'cx', width);
-    circle.setAttributeNS(null, 'cy', height);
-    circle.setAttributeNS(null, 'r', radius);
+    circle.setAttributeNS(null, 'cx', circleRange);
+    circle.setAttributeNS(null, 'cy', circleRange);
+    circle.setAttributeNS(null, 'r', (circleRange - 10));
     this.svg.appendChild(circle);
   };
 
@@ -52,13 +53,6 @@
       ref.setAttributeNS(null, k, options[k]);
     }
     return ref;
-  };
-
-  SvgDraw.prototype.getViewBoxProperties = function (width, height) {
-    var vBoxWidth = Math.round(width / 10),
-        vBoxHeight = Math.round(height / 10);
-
-    return '0 0 '+ vBoxWidth + ' ' + vBoxHeight;
   };
 
   return SvgDraw;
